@@ -15,7 +15,7 @@
     "url": "git+https://github.com/Darin1027/Social-Network-API.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Darin Palombo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Darin1027/Social-Network-API/issues"
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Darin1027/Social-Network-API#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^6.8.3"
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20"
   }
 }
