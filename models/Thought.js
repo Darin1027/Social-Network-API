@@ -1,4 +1,5 @@
 const mongoose = require("mongoose"); // Require mongoose
+const ReactionSchema = require("./Reaction"); // Require the Reaction model
 
 // Define the Thought model
 const ThoughtSchema = new mongoose.Schema( // Define the ThoughtSchema using the mongoose.Schema() method
@@ -14,7 +15,7 @@ const ThoughtSchema = new mongoose.Schema( // Define the ThoughtSchema using the
       // Set the createdAt property to an object
       type: Date, // Set the type to Date
       default: Date.now, // Set the default property to Date.now
-      get: (createdAt) => moment(createdAt).format("MMM DD, YYYY [at] hh:mm a"), // Set the get property to a function that formats the createdAt date using moment.js
+      get: (timestamp) => new Date(timestamp).toDateString(), // Set the get property to a function that formats the createdAt date
     },
     username: {
       // Set the username property to an object
@@ -34,33 +35,6 @@ const ThoughtSchema = new mongoose.Schema( // Define the ThoughtSchema using the
     },
   }
 );
-
-// Define the Reaction subdocument schema
-const ReactionSchema = new mongoose.Schema({
-  // Define the ReactionSchema using the mongoose.Schema() method
-  reactionId: {
-    // Set the reactionId property to an object
-    type: mongoose.Types.ObjectId, // Set the type to ObjectId
-    default: mongoose.Types.ObjectId, // Set the default property to mongoose.Types.ObjectId
-  },
-  reactionBody: {
-    // Set the reactionBody property to an object
-    type: String, // Set the type to String
-    required: true, // Set the required property to true
-    maxlength: 280, // Set the maxlength property to 280
-  },
-  username: {
-    // Set the username property to an object
-    type: String, // Set the type to String
-    required: true, // Set the required property to true
-  },
-  createdAt: {
-    // Set the createdAt property to an object
-    type: Date, // Set the type to Date
-    default: Date.now, // Set the default property to Date.now
-    get: (createdAt) => moment(createdAt).format("MMM DD, YYYY [at] hh:mm a"), // Set the get property to a function that formats the createdAt date using moment.js
-  },
-});
 
 // Define the reactionCount virtual field
 ThoughtSchema.virtual("reactionCount").get(function () {

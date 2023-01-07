@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema( // Define the UserSchema using the mongo
       unique: true, // Set the unique property to true
       match: /^\S+@\S+\.\S+$/, // Set the match property to a regular expression that checks for a valid email address
     },
+    createdAt: {
+      // Set the createdAt property to an object
+      type: Date, // Set the type to Date
+      default: Date.now, // Set the default property to Date.now
+      get: (timestamp) => new Date(timestamp).toDateString(), // Set the get property to a function that formats the createdAt date
+    },
     thoughts: [
       // Set the thoughts property to an array of objects
       {
