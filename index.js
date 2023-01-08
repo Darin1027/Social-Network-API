@@ -5,9 +5,10 @@ const cwd = process.cwd(); // get the current working directory
 const PORT = process.env.PORT || 3001; // set the port for the Express server to listen on
 const app = express(); // create a new Express.js server
 
-const activity = cwd.includes("01-Activities") // Note: not necessary for the Express server to function. This just helps indicate what activity's server is running in the terminal.
-  ? cwd.split("/01-Activities/")[1]
-  : cwd;
+// // Note: not necessary for the Express server to function. This just helps indicate what activity's server is running in the terminal.
+// const activity = cwd.includes("01-Activities")
+//   ? cwd.split("/01-Activities/")[1]
+//   : cwd;
 
 app.use(express.urlencoded({ extended: true })); // parse incoming string or array data
 app.use(express.json()); // parse incoming JSON data
