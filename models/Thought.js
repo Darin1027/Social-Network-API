@@ -1,8 +1,8 @@
-const mongoose = require("mongoose"); // Require mongoose
+const { Schema, model } = require("mongoose"); // Require mongoose
 const ReactionSchema = require("./Reaction"); // Require the Reaction model
 
 // Define the Thought model
-const ThoughtSchema = new mongoose.Schema( // Define the ThoughtSchema using the mongoose.Schema() method
+const ThoughtSchema = new Schema( // Define the ThoughtSchema using the mongoose.Schema() method
   {
     thoughtText: {
       // Set the thoughtText property to an object
@@ -42,6 +42,6 @@ ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length; // Return the length of the reactions array
 });
 
-const Thought = mongoose.model("Thought", ThoughtSchema); // Create the Thought model using the ThoughtSchema
+const Thought = model("Thought", ThoughtSchema); // Create the Thought model using the ThoughtSchema
 
 module.exports = Thought; // Export the Thought model

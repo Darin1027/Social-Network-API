@@ -1,7 +1,8 @@
+const { Schema, model } = require("mongoose"); // Import the mongoose library
 const mongoose = require("mongoose"); // Import the mongoose library
 
 // Define the User model
-const UserSchema = new mongoose.Schema( // Define the UserSchema using the mongoose.Schema() method
+const UserSchema = new Schema( // Define the UserSchema using the mongoose.Schema() method
   {
     username: {
       // Set the username property to an object
@@ -55,6 +56,6 @@ UserSchema.virtual("friendCount").get(function () {
   return this.friends.length; // Return the length of the friends array
 });
 
-const User = mongoose.model("User", UserSchema); // Create the User model using the UserSchema
+const User = model("User", UserSchema); // Create the User model using the UserSchema
 
 module.exports = User; // Export the User model

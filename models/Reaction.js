@@ -1,7 +1,7 @@
-const mongoose = require("mongoose"); // Require mongoose
+const { Schema, Types } = require("mongoose"); // Import the mongoose module and destructure the Schema and Types properties from it
 
 // Define the Reaction subdocument schema
-const ReactionSchema = new mongoose.Schema({
+const ReactionSchema = new Schema({
   // Define the ReactionSchema using the mongoose.Schema() method
   reactionId: {
     // Set the reactionId property to an object
