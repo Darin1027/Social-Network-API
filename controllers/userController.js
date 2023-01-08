@@ -1,6 +1,6 @@
 // const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
-const { Thought } = require("./thoughtController");
+// const { Thought } = require("./thoughtController");
 
 // // Aggregate function to get the number of Users overall
 // const headCount = async () =>

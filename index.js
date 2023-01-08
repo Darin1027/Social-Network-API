@@ -18,6 +18,6 @@ db.once("open", () => {
   // once the database connection is open, start the Express.js server
   app.listen(PORT, () => {
     // start the Express.js server
-    console.log(`API server for ${activity} running on port ${PORT}!`); // log the activity name and port number to the terminal
+    console.log(`API server running on port ${PORT}!`); // log the activity name and port number to the terminal
   });
 });
