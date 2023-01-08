@@ -8,7 +8,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Get a course
+  // Get a single thought
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.ThoughtId })
       .select("-__v")
@@ -30,7 +30,7 @@ module.exports = {
       });
   },
 
-  // Delete a course
+  // Delete a thought
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((data) =>
@@ -42,7 +42,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Update a course
+  // Update a thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -52,7 +52,7 @@ module.exports = {
       .then((data) =>
         !data
           ? res.status(404).json({ message: "No thought with this id!" })
-          : res.json(course)
+          : res.json(data)
       )
       .catch((err) => res.status(500).json(err));
   },
