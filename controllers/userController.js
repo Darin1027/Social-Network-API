@@ -33,7 +33,7 @@ module.exports = {
   },
   // Get a single User
   getSingleUser(req, res) {
-    User.findOne({ _id: req.params.UserId })
+    User.findOne({ _id: req.params.userId })
       .select("-__v")
       .then(async (user) =>
         !user
@@ -77,33 +77,16 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  // Add an assignment to a student
-  addThought(req, res) {
-    console.log("You are adding a thought");
-    console.log(req.body);
+  updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { assignments: req.body } },
+      { $set: req.body },
       { runValidators: true, new: true }
     )
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No user found with that ID :(" })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-  // Remove assignment from a student
-  removeThought(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { assignment: { assignmentId: req.params.thoughtId } } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res.status(404).json({ message: "No user found with that ID :(" })
-          : res.json(user)
+      .then((data) =>
+        !data
+          ? res.status(404).json({ message: "No user with this id!" })
+          : res.json(data)
       )
       .catch((err) => res.status(500).json(err));
   },
