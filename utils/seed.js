@@ -1,16 +1,16 @@
-const connection = require("../config/connection");
-const { User, Thought } = require("../models");
-const { thoughtData, userData, emailData, reactionData } = require("./data");
+const connection = require("../config/connection"); // import the connection to the database
+const { User, Thought } = require("../models"); // import the User and Thought models
+const { thoughtData, userData, emailData, reactionData } = require("./data"); // import the data from the data.js file
 
-const seed = async () => {
-  // Clear existing data in the database
-  await User.deleteMany({});
-  await Thought.deleteMany({});
+// Seed the database with the data from the data.js file
+const seed = async () => { // create a function that will seed the database
+  await User.deleteMany({}); // delete all users from the database
+  await Thought.deleteMany({}); // delete all thoughts from the database
 
   // Create new users
-  const users = userData.map((username, i) => ({
+  const users = userData.map((username, i) => ({ // map over the userData array and create a new user for each username
     username,
-    email: emailData[i],
+    email: emailData[i], // use the emailData array to assign an email to each user
   }));
 
   const createdUsers = await User.create(users);
