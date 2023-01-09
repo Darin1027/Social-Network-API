@@ -28,17 +28,8 @@ module.exports = {
   // Get all Users
   getUser(req, res) {
     User.find()
-      .then(async (user) => {
-        const userObj = {
-          user,
-          headCount: await headCount(),
-        };
-        return res.json(userObj);
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+      .then((data) => res.json(data))
+      .catch((err) => res.status(500).json(err));
   },
   // Get a single User
   getSingleUser(req, res) {
