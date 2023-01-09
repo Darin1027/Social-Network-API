@@ -1,3 +1,5 @@
+// todo change to thoughts
+
 const router = require("express").Router();
 const {
   getThought,
@@ -16,5 +18,6 @@ router
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
+//todo /api/thoughts/:thoughtId/reactions
 
 module.exports = router;

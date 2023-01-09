@@ -5,8 +5,6 @@ const {
   createUser,
   updateUser,
   deleteUser,
-  addThought,
-  removeThought,
 } = require("../../controllers/userController");
 
 // /api/user
@@ -20,9 +18,9 @@ router
   .delete(deleteUser);
 
 // /api/user/:userId/thought
-router.route("/:userId/thought").post(addThought);
+// router.route("/:userId/thought").post(addThought);
 
 // /api/user/:userId/thought/:thoughtId
-router.route("/:userId/thought/:thoughtId").delete(removeThought);
+// router.route("/:userId/thought/:thoughtId").delete(removeThought);
 
 module.exports = router;
