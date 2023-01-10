@@ -56,4 +56,49 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+  // Add a reaction to a thought
+  addReaction(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
+      .then((thought) => {
+        if (!thought) {
+          return res.status(404).json({ message: "No thought with that ID" });
+        }
+        // Add the reaction to the thought's reactions array
+        thought.reactions.push({
+          user: req.body.user,
+          reaction: req.body.reaction,
+        });
+        // Save the thought with the new reaction
+        thought
+          .save()
+          .then((updatedThought) => res.json(updatedThought))
+          .catch((err) => res.status(500).json(err));
+      })
+      .catch((err) => res.status(500).json(err));
+  },
+
+  deleteReaction(req, res) {
+    Thought.findOne({ _id: req.params.thoughtId })
+      .then((thought) => {
+        if (!thought) {
+          return res.status(404).json({ message: "No thought with that ID" });
+        }
+        // Find the index of the reaction to delete
+        const reactionIndex = thought.reactions.findIndex(
+          (reaction) => reaction._id == req.params.reactionId
+        );
+        if (reactionIndex === -1) {
+          return res.status(404).json({ message: "No reaction with that ID" });
+        }
+        // Remove the reaction from the reactions array
+        thought.reactions.splice(reactionIndex, 1);
+        // Save the updated thought
+        thought
+          .save()
+          .then((updatedThought) => res.json(updatedThought))
+          .catch((err) => res.status(500).json(err));
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
