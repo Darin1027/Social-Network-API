@@ -10,7 +10,7 @@ module.exports = {
 
   // Get a single thought
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.ThoughtId })
+    Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
       .then((course) =>
         !course
@@ -36,11 +36,11 @@ module.exports = {
       .then((data) =>
         !data
           ? res.status(404).json({ message: "No thought with that ID" })
-          : User.deleteMany({ _id: { $in: Thought.User } })
+          : res.json({ message: "Thought deleted successfully!" })
       )
-      .then(() => res.json({ message: "Thought and User deleted!" }))
       .catch((err) => res.status(500).json(err));
   },
+
 
   // Update a thought
   updateThought(req, res) {
