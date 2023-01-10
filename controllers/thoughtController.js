@@ -57,23 +57,21 @@ module.exports = {
   },
 
   addReaction(req, res) {
-    if (!req.params.id) {
+    if (!req.params.thoughtId) {
       return res.status(400).json({ message: "Thought Id is missing" });
     }
     if (!req.body.reaction || req.body.reaction === "") {
       return res.status(400).json({ message: "Reaction can't be empty" });
     }
-
-    Thought.findById(req.params.id, (err, foundThought) => {
+    Thought.findById(req.params.thoughtId, (err, foundThought) => {
       if (err) {
         return res.status(500).json(err);
       }
       if (!foundThought) {
         return res.status(404).json({ message: "No thought with that ID" });
       }
-
       Thought.findByIdAndUpdate(
-        req.params.id,
+        req.params.thoughtId,
         { $push: { reactions: req.body.reaction } },
         { new: true, runValidators: true },
         (err, thought) => {
