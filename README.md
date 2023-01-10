@@ -13,7 +13,7 @@
 9. [ Resources. ](#resources)
 10. [ Links. ](#links)
 
-# Description
+## Description
 
 - User Story
 
@@ -37,7 +37,7 @@ WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
 
-# Installation
+## Installation
 
 - Clone the repository using:
 
@@ -74,7 +74,7 @@ Or, since the Package.Json is included you can run the below command to install 
 npm i
 ```
 
-# Usage
+## Usage
 
 - Ensure all depencies and above steps are fulfilled
 - Navigate to the working directory and open a terminal and run the below command
@@ -85,7 +85,7 @@ npm i
 npm start
 ```
 
-# License
+## License
 
 - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -115,11 +115,11 @@ SOFTWARE.
 
 - https://opensource.org/licenses/MIT
 
-# Tests
+## Tests
 
 - N/A
 
-# Screenshots
+## Screenshots
 
 ![Photo ex.1](./assets/Thought-1.png)
 
@@ -141,11 +141,11 @@ SOFTWARE.
 
 ![Photo ex.10](./assets/Screenshot_20230110_071120.png)
 
-# Contributors
+## Contributors
 
 - Darin Palombo [dplb1027@gmail.com]
 
-# Questions
+## Questions
 
 Want to see more of my work?
 
